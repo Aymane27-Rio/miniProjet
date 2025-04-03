@@ -1,6 +1,7 @@
 ## Project structure
 
 myheart-healthcare/
+
 ├── patient-service/         # Patient management
 
 ├── appointment-service/     # Appointment scheduling
