@@ -11,7 +11,8 @@ const services = [
 ];
 
 services.forEach(service => {
-    exec(`cd ${service.path} && npm start`, (error, stdout, stderr) => {
+    console.log(`Starting ${service.name} service...`);
+    exec(`node ${service.path}/server.js`, (error, stdout, stderr) => {
         if (error) {
             console.error(`Error starting ${service.name} service: ${error.message}`);
             return;
@@ -20,6 +21,12 @@ services.forEach(service => {
             console.error(`Stderr from ${service.name} service: ${stderr}`);
             return;
         }
-        console.log(`${service.name} service started on port ${service.port}`);
+        console.log(stdout);
     });
+});
+
+console.log('All services are starting...');
+console.log('Access them at:');
+services.forEach(service => {
+    console.log(`${service.name}: http://localhost:${service.port}`);
 });
